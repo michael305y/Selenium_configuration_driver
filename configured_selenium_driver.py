@@ -3,7 +3,7 @@
 Selenium Web Driver configuration file
 '''
 import time
-import pandas as pd
+import pandas as pd   
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager, GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -19,6 +19,7 @@ def initialize_chrome_webdriver():
     chrome_options.add_argument("--disable-dev-shm-usage")
     service = webdriver.chrome.service.Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
+    # driver = webdriver.Chrome(service=service, options=chrome_options) # enable this to make the browser instance headless
     return driver
 
 # Web driver for Firefox
@@ -29,7 +30,8 @@ def initialize_firefox_webdriver():
     return driver
 
 
-# JUST A BTW...
+
+# ================ JUST A BTW=============================================.
 # creating a DF once all malls have been extracted
 def creating_DF(mall_names, mall_categories, Rates, ratings, Location_address):
     print('One second... creating our dataframe')
